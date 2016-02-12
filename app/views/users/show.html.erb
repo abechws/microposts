@@ -2,3 +2,6 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+<% if @user.location %>
+  <div>現在地:<%= @user.location %></div>
+<% end %>
