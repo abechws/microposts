@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get    'signup' , to: 'users#new'
   post   'login'  , to: 'sessions#create'
   delete 'logout' , to: 'sessions#destroy'
-  get    'edit'   , to: 'users#edit'
-  resources :users
+  get    'settings/edit'   , to: 'users#edit'
+  resources :users, except: [:edit]
   resources :sessions, only: [:new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
