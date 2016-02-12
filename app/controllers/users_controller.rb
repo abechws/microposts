@@ -34,6 +34,16 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.order(created_at: :desc)
   end
 
+  def followers
+    @user = current_user
+    @followers = @user.follower_users
+  end
+
+  def followings
+    @user = current_user
+    @followers = @user.following_users
+  end
+
   private
   
   def user_params
