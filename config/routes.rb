@@ -4,10 +4,15 @@ Rails.application.routes.draw do
   get    'signup' , to: 'users#new'
   post   'login'  , to: 'sessions#create'
   delete 'logout' , to: 'sessions#destroy'
+<<<<<<< HEAD
   get    'edit'   , to: 'users#edit'
   get    'users/:id/followers', to: 'users#followers'
   get    'users/:id/followings', to: 'users#followings'
   resources :users
+=======
+  get    'settings/edit'   , to: 'users#edit'
+  resources :users, except: [:edit]
+>>>>>>> user-profile
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts
   resources :relationships, only: [:create, :destroy]
