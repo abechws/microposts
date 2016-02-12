@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :follower_relationships, class_name: "Relationship",
                                     foreign_key: "followed_id",
                                     dependent: :destroy
-  has_many :follower_users, through: :follower_releationships, source: :follower
+  has_many :follower_users, through: :follower_relationships, source: :follower
 
   def follow(other_user)
     following_relationships.find_or_create_by(followed_id: other_user.id)
@@ -31,5 +31,13 @@ class User < ActiveRecord::Base
 
   def feed_items
     Micropost.where(user_id: following_user_ids + [self.id])
+  end
+
+  def following_users
+    User.where(id: following_user_ids)
+  end
+
+  def follower_users
+    User.where(id: follower_user_ids)
   end
 end

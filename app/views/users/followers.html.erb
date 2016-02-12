@@ -1,0 +1,9 @@
+<h1><%= @user.name %>のフォロワー</h1>
+<ul>
+<% @followers.each do |follower| %>
+  <li id="user-<%= follower.id %>">
+    <%= link_to gravatar_for(follower, size: 50), follower %>
+    <span class="user"><%= link_to follower.name, follower %></span>
+  </li>
+<% end %>
+</ul>
